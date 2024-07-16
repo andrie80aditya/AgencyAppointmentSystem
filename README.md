@@ -15,3 +15,4 @@ Requirement:
 - Net Core 6
 - Autofac
 - Microsoft Entity Framework Core
+- Swashbuckle AspNetCore

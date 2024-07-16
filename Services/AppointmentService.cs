@@ -38,16 +38,9 @@ namespace AgencyAppointmentSystem.Services
 
             if (maxAppointmentsPerDay > 0)
             {
-                while (appointments.Where(a => a.Date.Date == date).Count() >= maxAppointmentsPerDay)
+                while (appointments.Where(a => a.Date.Date == date).Count() >= maxAppointmentsPerDay || holiday.FirstOrDefault(a => a.Date.Date == date) != null)
                 {
                     date = date.AddDays(1);
-
-                    var holiday2 = await _holidayRepository.GetAllAsync();
-                    var holidayByDate2 = holiday2.FirstOrDefault(a => a.Date.Date == date);
-                    if (holidayByDate2 != null)
-                    {
-                        date = date.AddDays(1);
-                    }
                 }
             }
 
